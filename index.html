@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reader Multi-Formato</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+</head>
+<body>
+
+  <header>
+    <input type="file" id="fileInput" accept=".epub,.pdf,.docx,.txt,.md,.markdown,.html,.htm,.mobi,.azw3,.fb2,.cbz" />
+    <button id="prev" disabled>◀</button>
+    <button id="next" disabled>▶</button>
+    <button id="tocBtn" disabled>☰ Indice</button>
+    <button id="bookmarkBtn" disabled>🔖</button>
+    <button id="exportBtn" disabled>📤 Esporta</button>
+    <button id="themeBtn">🌓 Tema</button>
+    <span id="title"></span>
+  </header>
+
+  <div id="tts-bar">
+    <button id="playBtn" disabled>🔊 Leggi</button>
+    <button id="pauseBtn" disabled>⏸ Pausa</button>
+    <button id="stopBtn" disabled>⏹ Stop</button>
+    <label>Voce:</label>
+    <select id="voiceSelect" disabled></select>
+    <label>Velocità:</label>
+    <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1" disabled>
+    <span id="rateVal">1.0x</span>
+  </div>
+
+  <div id="viewer"></div>
+  <div id="status">Nessun documento caricato.</div>
+
+  <div id="toc-overlay"></div>
+  <aside id="toc-panel">
+    <div class="toc-header"><span>Indice</span><button id="tocClose">✕</button></div>
+    <div id="toc-content"></div>
+  </aside>
+
+  <!-- Librerie CDN (script globali) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+  <!-- App (modulo ES) -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
